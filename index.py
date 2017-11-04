@@ -1,7 +1,5 @@
 from flask import Flask, redirect, render_template, request, url_for
-from option import Option
-import json
-import datetime
+from data import DataFilter
 
 app = Flask(__name__)
 
@@ -11,17 +9,20 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/', methods=['POST'])
-def choices_made():
+@app.route('/choicesMade', methods=['POST'])
+def choicesMade():
     # Getting integer value from the user
-    zip = int(request.form['text'])
-    # Creating Option() for the parameters
-    filterArea = Option()
-    #Getting Parameters for the area
-    parameters = filterArea.meal_search(zip,None)
+    zipCode = request.form['text']
+    # Calling the html for the choices
+    cuisine = request.form['cuisine']
+    cuisine = cuisine.upper()
+    priceRange = request.form['priceRange']
+    filterArea = DataFilter()
+    # Getting Parameters for the area
+    parameters = filterArea.getLocation(zipCode, priceRange)
     location = filterArea.get_results(parameters)
+    # Calling the html holding all of the final choices
     return render_template('index.html', location = location)
-
 
 
 if __name__ == '__main__':
