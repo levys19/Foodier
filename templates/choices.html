@@ -58,11 +58,9 @@
             total time through = {{counter[0]}}
             <video id="video" width="300" height="300" autoplay></video>
             <button id="snap">Snap Photo</button>
-            <button id = "btnSave" onclick = "savePhoto()"> Save Photo</button>
+            <!--<button id = "btnSave" onclick = "savePhoto()"> Save Photo</button>-->
             <canvas id="canvas" width="300" height="300"></canvas>
-            <video id="video" width="300px" height="300px" autoplay></video>
-            <button id="snap">Snap Photo</button>
-            <canvas id="canvas" width="300px" height="300px"></canvas>
+
         </div>
 
     </body>
@@ -91,20 +89,20 @@
 
         });
 
-        function savePhoto(){
-            var data = canvas.toDataURL();
-            var title = $("#title").val();
-
-            $.ajax({
-                type: "POST",
-                url: "savephoto.aspx",
-                data: {
-                    photo: data,
-                    title: title
-                }
-            }).done(function (o) {
-                alert("Photo Saves Successfully!");
-            });
-        }
+//        function savePhoto(){
+//            var data = canvas.toDataURL();
+//            var title = $("#title").val();
+//
+//            $.ajax({
+//                type: "POST",
+//                url: "savephoto.aspx",
+//                data: {
+//                    photo: data,
+//                    title: title
+//                }
+//            }).done(function (o) {
+//                alert("Photo Saves Successfully!");
+//            });
+//        }
     </script>
 </html>
