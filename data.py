@@ -1,6 +1,7 @@
 import requests
 import rauth
 import pprint
+import base64
 
 
 class DataFilter:
@@ -12,7 +13,6 @@ class DataFilter:
         params["open_now"] = True
         params["price"] = price
         params["limit"] = 5
-        #params["categories"] = cuisine
         return params
 
 # method returns a dictionary of keys: restaurant ids and values: photo urls
@@ -37,6 +37,8 @@ class DataFilter:
             rest_photo[name] = rest_info["photos"] # mapping photo urls to their restaurant ids
         #pprint.pprint(rest_photo)
         return rest_photo
+
+
 
 
 #R = DataFilter.get_results(DataFilter.getLocation("14223", "1"))
