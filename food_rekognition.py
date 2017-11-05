@@ -29,3 +29,4 @@ class FoodRekognition:
                 return False
             if label['Name'] == "Food":
                 return True
+            return False
