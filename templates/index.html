@@ -30,36 +30,10 @@
     
     <body>
         
-        <div id="container">
-            <video autoplay="true" id="my_camera"> </video>
-            <input id="b" type="button" disabled="false" value="Take Picture">
-        </div>
-                
-            <script type="text/javascript" src="../webcam.min.js"></script>
-            <script language="JavaScript">
-                Webcam.set({
-                    width: 320,
-                    height: 240,
-                    image_format: 'jpeg',
-                    jpeg_quality: 90
-                });
-                Webcam.attach( '#my_camera' );
-	       </script>
+        <video id="video" width="640" height="480" autoplay></video>
+        <button id="snap">Snap Photo</button>
+        <canvas id="canvas" width="640" height="480"></canvas>
         
-            <form>
-		  <input type="button" value="Take Snapshot" onclick="take_snapshot()">
-	       </form>
-        <script language="JavaScript">
-            function take_snapshot() {
-                // take snapshot and get image data
-                Webcam.snap( function(data_uri) {
-                    // display results in page
-                    document.getElementById('results').innerHTML = 
-                        '<h2>Here is your image:</h2>' + 
-                        '<img src="'+data_uri+'"/>';
-                } );
-            }
-	   </script>
         
         <div class="text-center">
             <h1> Fooder</h1> 
@@ -76,4 +50,32 @@
         </div>
         
     </body>
+    <script>
+        
+        // Grab elements, create settings, etc.
+        var video = document.getElementById('video');
+
+        // Get access to the camera!
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Not adding `{ audio: true }` since we only want video now
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                video.src = window.URL.createObjectURL(stream);
+                video.play();
+            });
+        }
+        // Elements for taking the snapshot
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var video = document.getElementById('video');
+
+        // Trigger photo take
+        document.getElementById("snap").addEventListener("click", function() {
+            context.drawImage(video, 0, 0, 640, 480);
+            context.style.display = 'block';
+
+        });
+        
+
+</script>
+
 </html>
