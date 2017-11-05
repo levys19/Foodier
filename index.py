@@ -24,13 +24,9 @@ def choices():
     return render_template('choices.html', restauraunts=location)
 
 
-@app.route('/', methods=['GET'])
-def imageSelection():
+@app.route('/afterChoices', methods=['GET'])
+def afterChoices():
     choice = int(request.form['choice'])
-    if choice != 0:
-        "hello"
-    else:
-        "remove the restaurant"
 
 
 
