@@ -33,7 +33,7 @@
         <div class="text-center">
 
                 <form action="{{url_for('final')}}" method = "POST">
-               {% for key, value in restauraunts %}
+               {% for key, value in restauraunts.items() %}
                  {% for images in value %}
                 <img src="{{images}}"  style='display:none'  class = imageCenter>
                 <input type="radio" name="yes" value="key"> Yes
