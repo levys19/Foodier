@@ -27,24 +27,51 @@
         <title>Filter Page</title>
     </head>
     <body>
+        
         <div class="text-center">
+        
+
             {% set counter = [0] %}
             {% for key, value in restauraunts.items() %}
             {% for images in value %}
-                <img src="{{images}}" id="{{counter[0]}}" style='display:none'>
+                <img src="{{images}}" id="{{counter[0]}}" style='display:none' length='300px' width='300px'>
                 {% if counter.append(counter.pop() + 1) %} {% endif %}
             {{counter[0]}}
             {% endfor %}
 
             {% endfor %}
             total time through = {{counter[0]}}
-        <form id="form" action="." method="POST">
-            <input type="submit" name="choice" value="Yes">
-            <input type="submit" name="choice" value="No">
-
-        </form>
-        
+            <video id="video" width="300" height="300" autoplay></video>
+            <button id="snap">Snap Photo</button>
+            <canvas id="canvas" width="300" height="300"></canvas>        
         </div>
 
     </body>
+    <script>
+
+        // Grab elements, create settings, etc.
+        var video = document.getElementById('video');
+
+        // Get access to the camera!
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Not adding `{ audio: true }` since we only want video now
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                video.src = window.URL.createObjectURL(stream);
+                video.play();
+            });
+        }
+        // Elements for taking the snapshot
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var video = document.getElementById('video');
+
+        // Trigger photo take
+        document.getElementById("snap").addEventListener("click", function() {
+            context.drawImage(video, 0, 0, 640, 480);
+            context.style.display = 'block';
+
+        });
+
+
+    </script>
 </html>
