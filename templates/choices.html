@@ -50,54 +50,28 @@
 
     </body>
     <script>
-        // Grab elements, create settings, etc.
-        var video = document.getElementById('video');
-
-        // Get access to the camera!
-        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            // Not adding `{ audio: true }` since we only want video now
-            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-                video.src = window.URL.createObjectURL(stream);
-                video.play();
-            });
-        }
-        // Elements for taking the snapshot
-        var canvas = document.getElementById('canvas');
-        var context = canvas.getContext('2d');
-        var video = document.getElementById('video');
 
 
 
         imgcounter = 1
-        counter = 0
-        imgarray = []
-            function showImage(){
-                if (imgcounter > 10){
+            function showImage() {
+                if (imgcounter > 10) {
                     clearInterval(intervalTime);
                 }
-                if(counter % 2 == 0){
-                    //display image
-                    var image = document.getElementById(String(imgcounter));
-                    var turnoff = document.getElementById(String(imgcounter - 1));
-                    image.style.display = 'block';
-                    turnoff.style.display = 'none';
-                    imgcounter ++;
-
-                }
-                else{
-                    //take picture
-                    var image = new Image();
-                    canvas = context.drawImage(video, 0, 0, 640, 480);
-                    image.src = canvas.toDataURL("image/png");
-                    imgarray.append(image)
-                }
-
-                counter ++;
-                console.log(counter)
+                //display image
+                var image = document.getElementById(String(imgcounter));
+                var turnoff = document.getElementById(String(imgcounter - 1));
+                image.style.display = 'block';
+                turnoff.style.display = 'none';
+                imgcounter++;
 
             }
-            var intervalTime = setInterval(showImage,1500)
-            $.get("getmethod/<javascript_data>")
+
+
+
+
+            var intervalTime = setInterval(showImage,3000)
+
 
     </script>
 </html>
