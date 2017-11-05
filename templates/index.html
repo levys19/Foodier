@@ -10,10 +10,27 @@
                 integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
         
         
+  
+        <style>
+            #container {
+                margin: 0px auto;
+                width: 500px;
+                height: 375px;
+                border: 10px #333 solid;
+            }
+            #videoElement {
+                width: 500px;
+                height: 375px;
+                background-color: #666;
+            }
+        </style>
+        
         <title>Fooder</title>
     </head>
     
     <body>
+        
+        
         <div class="text-center">
             <h1> Fooder</h1> 
             <form action="{{url_for('choices')}}" id="form" action="." method="POST">
@@ -25,7 +42,10 @@
                 <input type="radio" name="price" value="4"> $$$$<br>
                 <input type="submit" name="my-form" value="I'm Hungry">
             </form>
+
         </div>
         
     </body>
+
+
 </html>
