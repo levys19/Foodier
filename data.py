@@ -1,8 +1,5 @@
 import requests
-import rauth
-import pprint
-import base64
-
+from food_rekognition import FoodRekognition
 
 class DataFilter:
     @classmethod
@@ -35,8 +32,14 @@ class DataFilter:
             rest_info = resp2.json()
             name = rest_info["id"]
             rest_photo[name] = rest_info["photos"] #mapping photo urls to their restaurant ids
+        newList = list()
+        rekognizer = FoodRekognition
+        for photos in rest_photo:
+            if rekognizer.is_food(photos):
+                newList.append(photos)
+        return newList
+
         #pprint.pprint(rest_photo)
-        return rest_photo
 
 
 
