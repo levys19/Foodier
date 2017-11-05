@@ -15,8 +15,7 @@ class DataFilter:
         #params["categories"] = cuisine
         return params
 
-
-#method returns a dictionary of restaurant
+# method returns a dictionary of keys: restaurant ids and values: photo urls
     @classmethod
     def get_results(cls,params):
         consumer_key = "a5QvhItx614Et3Zy6H5qHQ"
