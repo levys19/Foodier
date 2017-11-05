@@ -30,9 +30,7 @@ def getFaces(jsdata):
 
 @app.route('/final', methods=['GET'])
 def final():
-    imageFromChoices = request.form['image']
-    image.append(imageFromChoices)
-    return render_template('final.html', restaurant=image)
+    return render_template('final.html')
 
 
 
