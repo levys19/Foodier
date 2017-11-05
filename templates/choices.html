@@ -38,11 +38,12 @@
                 {% if counter.append(counter.pop() + 1) %} {% endif %}
             {{counter[0]}}
             {% endfor %}
-
             {% endfor %}
+
             total time through = {{counter[0]}}
             <video id="video" width="300" height="300" autoplay></video>
             <button id="snap">Snap Photo</button>
+            <button id = "btnSave" onclick = "savePhoto()"> Save Photo</button>
             <canvas id="canvas" width="300" height="300"></canvas>        
         </div>
 
@@ -66,12 +67,26 @@
         var video = document.getElementById('video');
 
         // Trigger photo take
-        document.getElementById("snap").addEventListener("click", function() {
+        document.getElementById("snap").addEventListener("click", function(){
             context.drawImage(video, 0, 0, 640, 480);
             context.style.display = 'block';
 
         });
 
+        function savePhoto(){
+            var data = canvas.toDataURL();
+            var title = $("#title").val();
 
+            $.ajax({
+                type: "POST",
+                url: "savephoto.aspx",
+                data: {
+                    photo: data,
+                    title: title
+                }
+            }).done(function (o) {
+                alert("Photo Saves Successfully!");
+            });
+        }
     </script>
 </html>
