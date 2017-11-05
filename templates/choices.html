@@ -6,18 +6,16 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
                 integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
-        <title>filter page</title>
+        <title>Filter Page</title>
     </head>
     <body>
+        <div class="text-center">
+        <img src="{{restauraunts["image_url"]}}" alt="name">
         <form id="form" action="." method="POST">
-            <input type="radio" name="price" value="1"> $
-            <input type="radio" name="price" value="2"> $$
-            <input type="radio" name="price" value="3"> $$$
-            <input type="radio" name="price" value="4"> $$$$<br>
-            Cuisine: 
-            <input type="text" name="cuisine"> <br>
-            
-            <input type="submit" name="my-form" value="I'm Hungry">
+            <input type="submit" name="choice" value="{{restauraunts}}"> Yes
+            <input type="submit" name="choice" value="0"> No
         </form>
+        </div>
+
     </body>
 </html>
