@@ -32,42 +32,36 @@
     <h1 id="headS"><b>How does DISH make you feel...?</b></h1>
         <div class="text-center">
 
-
-            {% set counter = [0] %}
-            {% for key, value in restauraunts.items() %}
-            {% for images in value %}
-                <img src="{{images}}" id="{{counter[0]}}" style='display:none'  class = imageCenter>
-                {% if counter.append(counter.pop() + 1) %} {% endif %}
-            {% endfor %}
-            {% endfor %}
+                <form action="{{url_for('final'}}" method = "POST">
+               {% for key, value in restauraunts.item() %}
+                 {% for images in value %}
+                <img src="{{images}}"  style='display:none'  class = imageCenter>
+                <input type="radio" name="yes" value="key"> Yes
+                <input type="radio" name="no"  value="no" > No
+                 {% endfor %}
+               {% endfor %}
+            </form>
 
 
         </div>
 
     </body>
-    <script>
-
-
-
-        imgcounter = 1
-            function showImage() {
-                if (imgcounter > 10) {
-                    clearInterval(intervalTime);
-                }
-                //display image
-                var image = document.getElementById(String(imgcounter));
-                var turnoff = document.getElementById(String(imgcounter - 1));
-                image.style.display = 'block';
-                turnoff.style.display = 'none';
-                imgcounter++;
-
-            }
 
 
 
 
-            var intervalTime = setInterval(showImage,3000)
 
 
-    </script>
+
+
+
+
+
+
+
+
+
+
+
+
 </html>
