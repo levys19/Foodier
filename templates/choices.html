@@ -52,15 +52,16 @@
             {% set counter = [0] %}
             {% for key, value in restauraunts.items() %}
             {% for images in value %}
-                <img src="{{images}}" id="{{counter[0]}}" style='display:none'  class = "imageCenter">
+                <img src="{{images}}" id="{{counter[0]}}" style='display:none'  class = imageCenter>
                 {% if counter.append(counter.pop() + 1) %} {% endif %}
             {% endfor %}
             {% endfor %}
 
             total time through = {{counter[0]}}
             <video id="video" width="300" height="300" autoplay></video>
-             <button id="snap">Snap Photo</button>
-             <canvas id="canvas" width="300" height="300"></canvas>
+            <button id="snap">Snap Photo</button>
+            <!--<button id = "btnSave" onclick = "savePhoto()"> Save Photo</button>-->
+            <canvas id="canvas" width="300" height="300"></canvas>
 
         </div>
 
@@ -90,20 +91,20 @@
 
         });
 
-       function savePhoto(){
-           var data = canvas.toDataURL();
-           var title = $("#title").val();
-
-           $.ajax({
-               type: "POST",
-               url: "savephoto.aspx",
-               data: {
-                   photo: data,
-                   title: title
-               }
-           }).done(function (o) {
-               alert("Photo Saves Successfully!");
-           });
-       }
+//        function savePhoto(){
+//            var data = canvas.toDataURL();
+//            var title = $("#title").val();
+//
+//            $.ajax({
+//                type: "POST",
+//                url: "savephoto.aspx",
+//                data: {
+//                    photo: data,
+//                    title: title
+//                }
+//            }).done(function (o) {
+//                alert("Photo Saves Successfully!");
+//            });
+//        }
     </script>
 </html>
