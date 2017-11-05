@@ -23,10 +23,10 @@ def choices():
     # Calling the html holding all of the final choices
     return render_template('choices.html', restauraunts=location)
 
-@app.route('/getmethod/<jsdata>', methods=['GET'])
-def getFaces(jsdata):
-    print(jsdata)
-    return json.loads[jsdata][0]
+# @app.route('/getmethod/<jsdata>', methods=['GET'])
+# def getFaces(jsdata):
+#     print(jsdata)
+#     return json.loads[jsdata][0]
 
 @app.route('/final', methods=['GET'])
 def final():

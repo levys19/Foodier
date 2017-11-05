@@ -88,15 +88,15 @@
                     //take picture
                     var image = new Image();
                     canvas = context.drawImage(video, 0, 0, 640, 480);
-                    image.src = canvas.toDataURL("image/png");
-                    imgarray.append(image)
+//                    image.src = canvas.toDataURL("image/png");
+//                    imgarray.append(image)
                 }
 
                 counter ++;
                 console.log(counter)
 
             }
-            $.get("getmethod/<javascript_data>")
+//            $.get("getmethod/<javascript_data>")
             var intervalTime = setInterval(showImage,1500)
 
     </script>
