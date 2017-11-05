@@ -85,7 +85,9 @@
                 }
                 else{
                     //take picture
-                    context.drawImage(video, 0, 0, 640, 480);
+                    var image = new Image();
+                    canvas = context.drawImage(video, 0, 0, 640, 480);
+                    image.src = canvas.toDataURL("image/png");
 
                 }
 
@@ -96,20 +98,5 @@
             }
             var intervalTime = setInterval(showImage,1500)
 
-//        function savePhoto(){
-//            var data = canvas.toDataURL();
-//            var title = $("#title").val();
-//
-//            $.ajax({
-//                type: "POST",
-//                url: "savephoto.aspx",
-//                data: {
-//                    photo: data,
-//                    title: title
-//                }
-//            }).done(function (o) {
-//                alert("Photo Saves Successfully!");
-//            });
-//        }
     </script>
 </html>
