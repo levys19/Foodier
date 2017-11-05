@@ -7,11 +7,21 @@
         
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
                 integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-        
+
+        <style>
+            #HeaderR{
+                color: mediumseagreen;
+                text-align: center;
+                font-family: "Copperplate";
+                margin-top: 5%;
+                font-size: 300%;
+            }
+        </style>
+
     </head>
     <body>
         <div class="text-center">
-            <h1> Restauraunts you might like</h1>
+            <h1 id = "HeaderR"> Restaurants You Might Like...</h1>
             {% for restauraunts in restaurauntlist%}
                 <p> {{restauraunts["name"]}}</p>
                 <p> {{restauraunts["price"]}}</p>
