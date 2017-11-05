@@ -23,27 +23,40 @@
             integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
                 integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
+        <style>
+            img.imageCenter{
+                display:block;
+                margin-left: auto;
+                margin-right:auto;
+                margin-top: 3%;
+                height: 30%;
+                width:30%;
+            }
+            #headS{
+                color: mediumseagreen;
+                text-align: center;
+                font-family: "Copperplate";
+                margin-top: 5%;
+                font-size: 300%;
+            }
+        </style>
         <title>Filter Page</title>
     </head>
     <body>
-        
+    <h1 id="headS"><b>How does DISH make you feel...?</b></h1>
         <div class="text-center">
         
 
             {% set counter = [0] %}
             {% for key, value in restauraunts.items() %}
             {% for images in value %}
-                <img src="{{images}}" id="{{counter[0]}}" style='display:none' length='300px' width='300px'>
+                <img src="{{images}}" id="{{counter[0]}}" style='display:none'  class = imageCenter>
                 {% if counter.append(counter.pop() + 1) %} {% endif %}
-            {{counter[0]}}
             {% endfor %}
-
             {% endfor %}
-            total time through = {{counter[0]}}
-            <video id="video" width="300" height="300" autoplay></video>
+            <video id="video" width="300px" height="300px" autoplay></video>
             <button id="snap">Snap Photo</button>
-            <canvas id="canvas" width="300" height="300"></canvas>        
+            <canvas id="canvas" width="300px" height="300px"></canvas>
         </div>
 
     </body>
