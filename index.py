@@ -17,16 +17,14 @@ def choices():
     price = request.form['price']
     filterArea = DataFilter()
     # Getting Parameters for the area
-    parameters = filterArea.getLocation(zipCode, price, None)
+    parameters = filterArea.getLocation(zipCode, price)
     location = filterArea.get_results(parameters)
-    location = {}
-    location["image_url"] = "https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg"
-    location["image_url"] = "https://media2.s-nbcnews.com/j/newscms/2017_10/1200234/10-healthy-fast-food-meals-008-subway-inline-today-170309_89a32509f1b93e969a831a913cc2a2d1.today-inline-large.jpg"
+    print(type(location))
     # Calling the html holding all of the final choices
     return render_template('choices.html', restauraunts=location)
 
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET'])
 def imageSelection():
     choice = int(request.form['choice'])
     if choice != 0:
