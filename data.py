@@ -40,7 +40,7 @@ class DataFilter:
                 if not rekognizer.is_food(indiv):
                     photos.remove(indiv)
 
-        print(rest_photos)
+        print(rest_photo)
         # return newList
 
         #pprint.pprint(rest_photo)
