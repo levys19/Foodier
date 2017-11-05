@@ -35,7 +35,7 @@ class DataFilter:
             resp2 = requests.get(url=url2, headers=headers)
             rest_info = resp2.json()
             name = rest_info["id"]
-            rest_photo[name] = rest_info["photos"] # mapping photo urls to their restaurant ids
+            rest_photo[name] = rest_info["photos"] #mapping photo urls to their restaurant ids
         #pprint.pprint(rest_photo)
         return rest_photo
 
