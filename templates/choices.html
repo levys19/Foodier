@@ -47,7 +47,7 @@
     <body>
     <h1 id="headS"><b>How does DISH make you feel...?</b></h1>
         <div class="text-center">
-        
+
 
             {% set counter = [0] %}
             {% for key, value in restauraunts.items() %}
@@ -58,10 +58,10 @@
             {% endfor %}
 
             total time through = {{counter[0]}}
-            <video id="video" width="300" height="300" autoplay></video>
-            <button id="snap">Snap Photo</button>
-            <!--<button id = "btnSave" onclick = "savePhoto()"> Save Photo</button>-->
-            <canvas id="canvas" width="300" height="300"></canvas>
+             <video id="video" width="300" height="300" autoplay></video>
+             <button id="snap">Snap Photo</button>
+             <button id = "btnSave" onclick = "savePhoto()"> Save Photo</button>
+             <canvas id="canvas" width="300" height="300"></canvas>
 
         </div>
 
@@ -91,21 +91,21 @@
 
         });
 
-//        function savePhoto(){
-//            var data = canvas.toDataURL();
-//            var title = $("#title").val();
-//
-//            $.ajax({
-//                type: "POST",
-//                url: "savephoto.aspx",
-//                data: {
-//                    photo: data,
-//                    title: title
-//                }
-//            }).done(function (o) {
-//                alert("Photo Saves Successfully!");
-//            });
-//        }
+       function savePhoto(){
+           var data = canvas.toDataURL();
+           var title = $("#title").val();
+
+           $.ajax({
+               type: "POST",
+               url: "savephoto.aspx",
+               data: {
+                   photo: data,
+                   title: title
+               }
+           }).done(function (o) {
+               alert("Photo Saves Successfully!");
+           });
+       }
     </script>
 </html>
 cv
