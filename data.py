@@ -33,19 +33,20 @@ class DataFilter:
             rest_info = resp2.json()
             name = rest_info["id"]
             rest_photo[name] = rest_info["photos"] #mapping photo urls to their restaurant ids
-        newList = []
+        # print("------")
+        # print("BEFORE:")
+        # pprint.pprint(rest_photo)
+        # print("------")
+
         rekognizer = FoodRekognition
         for photos in rest_photo.values():
             for indiv in photos:
                 if not rekognizer.is_food(indiv):
                     photos.remove(indiv)
+        # print("------")
+        # print("AFTER:")
+        # pprint.pprint(rest_photo)
+        # print("------")
+        return rest_photo
 
-        print(rest_photo)
-        # return newList
-
-        #pprint.pprint(rest_photo)
-
-
-
-
-R = DataFilter.get_results(DataFilter.getLocation("14223", "1"))
+# R = DataFilter.get_results(DataFilter.getLocation("14223", "1"))
