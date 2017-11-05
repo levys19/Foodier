@@ -1,18 +1,22 @@
 import requests
 import rauth
+import pprint
 
 
 class DataFilter:
     @classmethod
-    def getLocation(cls, zipcode, price, cuisine):
+    def getLocation(cls, zipcode, price):
         params = dict()
         params["term"] = "restaurant"
         params["location"] = zipcode
         params["open_now"] = True
         params["price"] = price
-        params["categories"] = cuisine
+        params["limit"] = 5
+        #params["categories"] = cuisine
         return params
 
+
+#method returns a dictionary of restaurant
     @classmethod
     def get_results(cls,params):
         consumer_key = "a5QvhItx614Et3Zy6H5qHQ"
@@ -23,8 +27,20 @@ class DataFilter:
         url = 'https://api.yelp.com/v3/businesses/search'
         headers = {'Authorization': 'bearer %s' % access_token}
         resp = requests.get(url=url, params=params, headers=headers)
-        return resp.json()
+        restaurants = resp.json()
+        business = restaurants["businesses"]
+        rest_photo = dict()
+        for ids in business:
+            url2 = 'https://api.yelp.com/v3/businesses/' + ids["id"]
+            resp2 = requests.get(url=url2, headers=headers)
+            rest_info = resp2.json()
+            name = rest_info["id"]
+            rest_photo[name] = rest_info["photos"] # mapping photo urls to their restaurant ids
+        #pprint.pprint(rest_photo)
+        return rest_photo
 
+
+#R = DataFilter.get_results(DataFilter.getLocation("14223", "1"))
 
 
 
