@@ -24,9 +24,11 @@ def choices():
     return render_template('choices.html', restauraunts=location)
 
 
-@app.route('/afterChoices', methods=['GET'])
-def afterChoices():
-    choice = int(request.form['choice'])
+@app.route('/final', methods=['GET'])
+def final():
+    array = request.form['restaurants']
+
+    return render_template('final.html', restaurant=array)
 
 
 
