@@ -31,7 +31,7 @@ def imageSelection():
         "hello"
     else:
         "remove the restaurant"
-    
+
 
 
 

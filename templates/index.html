@@ -10,10 +10,57 @@
                 integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
         
         
+  
+        <style>
+            #container {
+                margin: 0px auto;
+                width: 500px;
+                height: 375px;
+                border: 10px #333 solid;
+            }
+            #videoElement {
+                width: 500px;
+                height: 375px;
+                background-color: #666;
+            }
+        </style>
+        
         <title>Fooder</title>
     </head>
     
     <body>
+        
+        <div id="container">
+            <video autoplay="true" id="my_camera"> </video>
+            <input id="b" type="button" disabled="false" value="Take Picture">
+        </div>
+                
+            <script type="text/javascript" src="../webcam.min.js"></script>
+            <script language="JavaScript">
+                Webcam.set({
+                    width: 320,
+                    height: 240,
+                    image_format: 'jpeg',
+                    jpeg_quality: 90
+                });
+                Webcam.attach( '#my_camera' );
+	       </script>
+        
+            <form>
+		  <input type="button" value="Take Snapshot" onclick="take_snapshot()">
+	       </form>
+        <script language="JavaScript">
+            function take_snapshot() {
+                // take snapshot and get image data
+                Webcam.snap( function(data_uri) {
+                    // display results in page
+                    document.getElementById('results').innerHTML = 
+                        '<h2>Here is your image:</h2>' + 
+                        '<img src="'+data_uri+'"/>';
+                } );
+            }
+	   </script>
+        
         <div class="text-center">
             <h1> Fooder</h1> 
             <form action="{{url_for('choices')}}" id="form" action="." method="POST">
@@ -25,6 +72,7 @@
                 <input type="radio" name="price" value="4"> $$$$<br>
                 <input type="submit" name="my-form" value="I'm Hungry">
             </form>
+
         </div>
         
     </body>

@@ -17,7 +17,7 @@
                 console.log(counter)
 
             }
-            var intervalTime = setInterval(showImage,500)
+            var intervalTime = setInterval(showImage,3000)
         </script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
             integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -38,11 +38,12 @@
 
             {% endfor %}
             total time through = {{counter[0]}}
-            <form id="form" action="." method="POST">
+        <form id="form" action="." method="POST">
             <input type="submit" name="choice" value="Yes">
             <input type="submit" name="choice" value="No">
 
         </form>
+        
         </div>
 
     </body>
