@@ -52,7 +52,7 @@
             {% set counter = [0] %}
             {% for key, value in restauraunts.items() %}
             {% for images in value %}
-                <img src="{{images}}" id="{{counter[0]}}" style='display:none'  class = imageCenter>
+                <img src="{{images}}" id="{{counter[0]}}" style='display:none'  class = "imageCenter">
                 {% if counter.append(counter.pop() + 1) %} {% endif %}
             {% endfor %}
             {% endfor %}
