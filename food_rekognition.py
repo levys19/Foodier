@@ -24,13 +24,8 @@ class FoodRekognition:
                 'Name': file_name
             }
         }, MinConfidence=75)
-        # print("URL:")
-        # print(url)
-        # print("Labels:")
         for label in detected_labels['Labels']:
             # print(label['Name'] + ' : ' + str(label['Confidence']))
-            if label['Name'] == "Person" and label['Confidence'] > 75:
-                return False
-            if label['Name'] == "Food":
+            if label['Name'] == "Food" and label['Confidence'] > 80:
                 return True
             return False

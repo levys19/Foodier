@@ -21,12 +21,13 @@ def choices():
     location = filterArea.get_results(parameters)
     print(type(location))
     # Calling the html holding all of the final choices
-    return render_template('choices.html', restauraunts=location)
+    return render_template('choices.html', restauraunt=location)
 
 
-@app.route('/final', methods=['GET'])
+@app.route('/final', methods=['POST'])
 def final():
-    return render_template('final.html')
+    restaurant = ('input[name=yes]:checked)')
+    return render_template('final.html',restauraunt=restaurant)
 
 
 

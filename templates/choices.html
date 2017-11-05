@@ -33,13 +33,18 @@
         <div class="text-center">
 
                 <form action="{{url_for('final')}}" method = "POST">
-               {% for key, value in restauraunts.items() %}
+                    {% set counter = 0 %}
+               {% for key, value in restauraunt.items() %}
+
                  {% for images in value %}
-                <img src="{{images}}"  style='display:none'  class = imageCenter>
-                <input type="radio" name="yes" value="key"> Yes
-                <input type="radio" name="no"  value="no" > No
+                <img src="{{images}}"  style='display:block'  class = imageCenter>
+                <input type="radio" name="{{counter}}" value="{{key}}"> Yes
+                    {{counter = counter + 1}}
                  {% endfor %}
                {% endfor %}
+                    <br>
+                    <input type="submit" name="my-form" value="I Like These">
+
             </form>
 
 
