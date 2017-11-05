@@ -1,5 +1,6 @@
 import requests
 from food_rekognition import FoodRekognition
+import pprint
 
 class DataFilter:
     @classmethod
@@ -32,19 +33,19 @@ class DataFilter:
             rest_info = resp2.json()
             name = rest_info["id"]
             rest_photo[name] = rest_info["photos"] #mapping photo urls to their restaurant ids
-        newList = list()
+        newList = []
         rekognizer = FoodRekognition
-        for photos in rest_photo:
-            if rekognizer.is_food(photos):
-                newList.append(photos)
-        return newList
+        for photos in rest_photo.values():
+            for indiv in photos:
+                if not rekognizer.is_food(indiv):
+                    photos.remove(indiv)
+
+        print(rest_photos)
+        # return newList
 
         #pprint.pprint(rest_photo)
 
 
 
 
-#R = DataFilter.get_results(DataFilter.getLocation("14223", "1"))
-
-
-
+R = DataFilter.get_results(DataFilter.getLocation("14223", "1"))
