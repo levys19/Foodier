@@ -32,7 +32,7 @@
     <h1 id="headS"><b>How does DISH make you feel...?</b></h1>
         <div class="text-center">
 
-                <form action="{{url_for('final'}}" method = "POST">
+                <form action="{{url_for('final')}}" method = "POST">
                {% for key, value in restauraunts.item() %}
                  {% for images in value %}
                 <img src="{{images}}"  style='display:none'  class = imageCenter>
