@@ -10,7 +10,7 @@ class DataFilter:
         params["location"] = zipcode
         params["open_now"] = True
         params["price"] = price
-        params["limit"] = 5
+        params["limit"] = 10
         return params
 
 # method returns a dictionary of keys: restaurant ids and values: photo urls

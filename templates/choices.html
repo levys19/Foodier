@@ -1,26 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script>
-            counter = 1
-            function showImage(){
-                if (counter > 13){
-                    clearInterval(intervalTime);
-                }
 
-                var image = document.getElementById(String(counter));
-                var turnoff = document.getElementById(String(counter - 1));
-                image.style.display = 'block';
-                turnoff.style.display = 'none';
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-                counter ++
-                console.log(counter)
-
-            }
-            var intervalTime = setInterval(showImage,3000)
-        </script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-            integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
                 integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
         <style>
@@ -82,12 +68,33 @@
         var context = canvas.getContext('2d');
         var video = document.getElementById('video');
 
-        // Trigger photo take
-        document.getElementById("snap").addEventListener("click", function(){
-            context.drawImage(video, 0, 0, 640, 480);
-            context.style.display = 'block';
 
-        });
+
+        imgcounter = 1
+        counter = 0
+            function showImage(){
+                if (imgcounter > 10){
+                    clearInterval(intervalTime);
+                }
+                if(counter % 2 == 0){
+                    //display image
+                    var image = document.getElementById(String(imgcounter));
+                    var turnoff = document.getElementById(String(imgcounter - 1));
+                    image.style.display = 'block';
+                    turnoff.style.display = 'none';
+                }
+                else{
+                    //take picture
+                    context.drawImage(video, 0, 0, 640, 480);
+
+                }
+
+                counter ++;
+                imgcounter ++;
+                console.log(counter)
+
+            }
+            var intervalTime = setInterval(showImage,1500)
 
 //        function savePhoto(){
 //            var data = canvas.toDataURL();
