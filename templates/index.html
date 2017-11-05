@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html>
-    <head>
+   <head>
+       <link href="/static/styles/index.css" rel="stylesheet" type="text/css">
+       <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+       <!--BootStrap -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+             integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
-        <!--BootStrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-              integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
-                integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-        
-        
-  
-        <style>
-            #container {
-                margin: 0px auto;
-                width: 500px;
-                height: 375px;
-                border: 10px #333 solid;
-            }
-            #videoElement {
-                width: 500px;
-                height: 375px;
-                background-color: #666;
-            }
-        </style>
-        
-        <title>Fooder</title>
-    </head>
-    
-    <body>
-        
-        
-        <div class="text-center">
-            <h1> Fooder</h1> 
-            <form action="{{url_for('choices')}}" id="form" action="." method="POST">
-                ZipCode: 
-                <input type="text" name="zipcode"><br>
-                <input type="radio" name="price" value="1"> $
-                <input type="radio" name="price" value="2"> $$
-                <input type="radio" name="price" value="3"> $$$
-                <input type="radio" name="price" value="4"> $$$$<br>
-                <input type="submit" name="my-form" value="I'm Hungry">
-            </form>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+               integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
-        </div>
-        
-    </body>
+
+
+       <style>
+           #headerT {
+               color: mediumseagreen;
+               text-align: center;
+               font-size: 130px ;
+               position: fixed;
+               top: 40%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+           }
+           #searchBar{
+               position: fixed;
+               text-align: center;
+               top: 50%;
+               left: 40%;
+
+           }
+           ::-webkit-input-placeholder{
+                   text-align: center;
+               }
+       </style>
+
+       <title>Fooder</title>
+   </head>
+
+   <body>
+
+       <div class="text-center">
+           <div id="searchBar">
+           <h1 id="headerT"> <b>Foodiér</b></h1>
+           <form action="{{url_for('choices')}}" id="form" action="." method="POST">
+               <input type="text" name="zipcode" placeholder="Please Enter your Zipcode" size = "30"><br>
+               <input type="radio" name="price" value="1"> $
+               <input type="radio" name="price" value="2"> $$
+               <input type="radio" name="price" value="3"> $$$
+               <input type="radio" name="price" value="4"> $$$$<br>
+               <br>
+               <input type="submit" name="my-form" value="I'm Hungry">
+           </form>
+           </div>
+
+       </div>
+
+   </body>
 
 
 </html>
