@@ -1,9 +1,9 @@
 from flask import Flask, redirect, render_template, request, url_for
 from data import DataFilter
-
+import json, requests
 app = Flask(__name__)
 restaurantLinks = []
-
+image = []
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
@@ -23,12 +23,16 @@ def choices():
     # Calling the html holding all of the final choices
     return render_template('choices.html', restauraunts=location)
 
+@app.route('/getmethod/<jsdata>', methods=['GET'])
+def getFaces(jsdata):
+    print(jsdata)
+    return json.loads[jsdata][0]
 
 @app.route('/final', methods=['GET'])
 def final():
-    array = request.form['restaurants']
-
-    return render_template('final.html', restaurant=array)
+    imageFromChoices = request.form['image']
+    image.append(imageFromChoices)
+    return render_template('final.html', restaurant=image)
 
 
 

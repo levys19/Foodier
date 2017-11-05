@@ -49,4 +49,7 @@ class DataFilter:
         # print("------")
         return rest_photo
 
+    @classmethod
+    def facialImages(cls, img):
+        json.load(j)
 # R = DataFilter.get_results(DataFilter.getLocation("14223", "1"))

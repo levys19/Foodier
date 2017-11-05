@@ -51,7 +51,6 @@
 
     </body>
     <script>
-
         // Grab elements, create settings, etc.
         var video = document.getElementById('video');
 
@@ -72,6 +71,7 @@
 
         imgcounter = 1
         counter = 0
+        imgarray = []
             function showImage(){
                 if (imgcounter > 10){
                     clearInterval(intervalTime);
@@ -88,7 +88,7 @@
                     var image = new Image();
                     canvas = context.drawImage(video, 0, 0, 640, 480);
                     image.src = canvas.toDataURL("image/png");
-
+                    imgarray.append(image)
                 }
 
                 counter ++;
@@ -96,6 +96,7 @@
                 console.log(counter)
 
             }
+            $.get("getmethod/<javascript_data>")
             var intervalTime = setInterval(showImage,1500)
 
     </script>
