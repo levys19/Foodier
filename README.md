@@ -4,7 +4,7 @@ This project was created by:
   * Levy Shi
   * Shally Guo
   * Jimmy Huang
-  * Mark Estudodillo
+  * Mark Estudillo
 # Inspiration
 From personal experiences, there are times when I want to eat out, but don't really have an idea of where exactly I want to eat. From there, my next plan of action would be to scroll through Yelp's list of restaurants to find a new place to dine. However, even though Yelp's services does offer an abundance of wonderful recommendations, at the end of the search, I always get overwhelmed with the number of options, and then find myself dinning at the same four restaurants that I always go. So, to prevent this, and encourage other users (and myself) to step out of my comfort zone and try out new restaurants, this app was created in a way that gave the users images of food and, from the users' preferences, output a recommend list of local restaurants to dine in.
 
