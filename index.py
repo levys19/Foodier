@@ -28,6 +28,7 @@ def choices():
 def final():
     restaurant = ('input[name=yes]:checked)')
     car = 0
+    pet = 0 
 
     return render_template('final.html',restauraunt=restaurant)
 
