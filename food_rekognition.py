@@ -8,7 +8,7 @@ class FoodRekognition:
 
         s3 = boto3.client('s3')
 
-        bucket = 'ubhackingfoodier'
+        bucket = 'ubhackingfoodie'
         file_name = "temp.jpg"
 
         client = boto3.client('rekognition')
@@ -24,8 +24,34 @@ class FoodRekognition:
                 'Name': file_name
             }
         }, MinConfidence=75)
+        # for label in detected_labels['Labels']:
+        #     print(label['Name'] + ' : ' + str(label['Confidence']))
         for label in detected_labels['Labels']:
-            # print(label['Name'] + ' : ' + str(label['Confidence']))
-            if label['Name'] == "Food" and label['Confidence'] > 80:
+            if label['Name'] == "Building" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "Logo" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "Menu" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "Person" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "People" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "Vehicle" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "Rust" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "Furniture" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "Room" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "Pub" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "Indoors" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "Car" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "Appliance" and label['Confidence'] > 70:
+                return False
+            if label['Name'] == "Food" and label['Confidence'] > 90:
                 return True
-            return False
