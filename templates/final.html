@@ -22,9 +22,9 @@
     <body>
 
         <div class="text-center">
-            <h1> Projected restaurants you might like! </h1>
-            {% for value in restauraunt %}
-            <p> {{value}} Restaurant</p>
+            <h1 id="HeaderR"> Projected restaurants you might like! </h1>
+            {% for value in restaurant %}
+            <p><a href="{{value[0]}}"> {{value[1]}}</a></p>
             {% endfor %}
         </div>
 
