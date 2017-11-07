@@ -8,7 +8,7 @@ class FoodRekognition:
 
         s3 = boto3.client('s3')
 
-        bucket = 'ubhackingfoodie'
+        bucket = 'ubhackingfoodier'
         file_name = "temp.jpg"
 
         client = boto3.client('rekognition')

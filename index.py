@@ -27,6 +27,8 @@ def choices():
 @app.route('/final', methods=['POST'])
 def final():
     restaurant = ('input[name=yes]:checked)')
+    car = 0
+
     return render_template('final.html',restauraunt=restaurant)
 
 
