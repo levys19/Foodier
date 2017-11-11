@@ -28,9 +28,8 @@ def choices():
 def final():
     restaurant = request.form.getlist('restaurant')
     newList = list()
-    secondList = list()
     for things in restaurant:
-        newList.append((DataFilter.getLink(str(things)),DataFilter.getLink(str(things))))
+        newList.append(DataFilter.getLink(str(things)))
     return render_template('final.html', restaurant=newList)
 
 
