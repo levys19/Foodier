@@ -28,23 +28,24 @@
         </style>
         <title>Filter Page</title>
     </head>
-    <body>
+        <body>
     <h1 id="headS"><b>How does DISH make you feel...?</b></h1>
         <div class="text-center">
 
-                <form action="{{url_for('final')}}" method = "POST">
-               {% for key, value in restauraunt.items() %}
 
-                 {% for images in value %}
-                <img src="{{images}}"  style='display:block'  class = imageCenter>
-                <input type="checkbox" name= "restaurant" value="{{key}}"> This Please!
-                 {% endfor %}
-               {% endfor %}
-                    <br>
-                    <input type="submit" name="my-form" value="I Like These">
+            {% set counter = [0] %}
+            {% for key, value in restaurant.items() %}
+            {% for images in value %}
+                <img src="{{images}}" id="{{counter[0]}}" style='display:none'  class = imageCenter>
+                {% if counter.append(counter.pop() + 1) %} {% endif %}
+            {% endfor %}
+            {% endfor %}
 
-            </form>
-
+            total time through = {{counter[0]}}
+             <video id="video" width="300" height="300" autoplay></video>
+             <button id="snap">Snap Photo</button>
+             <button id = "btnSave" onclick = "savePhoto()"> Save Photo</button>
+             <canvas id="canvas" width="1000" height="1000"></canvas>
 
         </div>
 
@@ -54,6 +55,48 @@
 
 
 
+    <script>
+        // Grab elements, create settings, etc.
+        var video = document.getElementById('video');
+        // Get access to the camera!
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Not adding `{ audio: true }` since we only want video now
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                video.src = window.URL.createObjectURL(stream);
+                video.play();
+            });
+        }
+        // Elements for taking the snapshot
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var video = document.getElementById('video');
+        // Trigger photo take
+        document.getElementById("snap").addEventListener("click", function(){
+            context.drawImage(video, 0, 0, 640, 480);
+            context.style.display = 'block';
+        });
+       function savePhoto(){
+           var data = canvas.toDataURL();
+           baseimage = new Image();
+           baseimage.onload = function() {
+               ctx.drawImage(baseimage,1,1);
+               var dataURL = canvas.toDataURL("image/png");
+               document.getElementById('canvasImg').src = dataURL;
+           }
+           baseimage.src    = 'what.jpg';
+           var title = $("#title").val();
+           $.ajax({
+               type: "POST",
+               url: "savephoto.aspx",
+               data: {
+                   photo: data,
+                   title: title
+               }
+           }).done(function (o) {
+               alert("Photo Saves Successfully!");
+           });
+       }
+    </script>
 
 
 
