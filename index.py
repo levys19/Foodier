@@ -21,7 +21,7 @@ def choices():
     location = filterArea.get_results(parameters)
     print(type(location))
     # Calling the html holding all of the final choices
-    return render_template('choices.html', restauraunt=location)
+    return render_template('choices.html', restaurant=location)
 
 
 @app.route('/final', methods=['POST'])
