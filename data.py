@@ -63,6 +63,7 @@ class DataFilter:
         restaurants = resp.json()
         business = restaurants["url"]
         return business
+
     @classmethod
     def getName(cls, ID):
         consumer_key = "a5QvhItx614Et3Zy6H5qHQ"
